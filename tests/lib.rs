@@ -6,7 +6,6 @@ extern crate rucky_macros;
 import_crates! {
     toml;
     rustc_serialize;
-    rand #[cfg(feature = "test_attr")];
 }
 
 #[test]
@@ -21,11 +20,4 @@ fn specify_member() {
         rustc_serialize::json {Json, Builder, AsJson};
         std::path {Path, PathBuf};
     }
-}
-
-#[cfg(feature = "test_attr")]
-#[test]
-fn attributed_import() {
-    let t = rand::random::<(f64, char)>();
-    println!("{:?}", t);
 }
