@@ -44,25 +44,47 @@
 //! You also need trailing semicolons `;` to tell the macro where to stop a statement.
 //!
 //! And for `import!` macro, The syntax used inside is quite similar to the ones
-//! you usually write beside `use` keyword, but there are some deviations.
+//! for `use` statement, but there are some deviations.
 //!
-//! The basics are like this:
+//! The basics like this:
 //!
-//! ```text
-//! <path to module> { [members] }
+//! ```rust,ignore
+//! import!(path::to::module::Item);
 //! ```
 //!
-//! Import several members from a module, you can:
+//! Or import multiple items at once with:
 //!
 //! ```rust,ignore
 //! import! {
 //!     nickel { Nickel, HttpRouter };
-//!     toml {Value, Table};
+//!     toml { Value, Table };
+//!     std::collections { LinkedList, HashSet };
 //! }
 //! ```
 //!
-//! And glob imports are also supported:
+//! Note that you need to split last segment of module name and block of items with
+//! whitespace, instrad of double colons `::` usually used in `use` statement.
 //!
+//! Glob imports are also supported:
+//!
+//! ```rust,ignore
+//! import!(std::io::prelude *);
+//!
+//! import! {
+//!     rustc_serialize *;
+//!     regex *;
+//! }
+//! ```
+//!
+//! As you see, separate-with-whitespace rule is also applied to glob-star `*` and
+//! path segments as well as multi-item import.
+//! That is the limit of this macro.
+//!
+//! # What you cannot do
+//!
+//! The macros restricted to:
+//!
+//! - You can't define alias with `as` keyword when importing an item
 
 mod imports;
 mod preluder;

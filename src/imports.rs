@@ -4,6 +4,12 @@ macro_rules! import {
     ( $pkg:path ) => {
         use $pkg;
     };
+    ( $root:ident * ) => {
+        use $root :: *;
+    };
+    ( $root:ident :: $($tail:ident)::+ * ) => {
+        use $root :: $( $tail )::* :: *;
+    };
     ( $pkg:path ; $( $rest:tt )* ) => {
         use $pkg;
         import!( $( $rest )* );
@@ -51,6 +57,7 @@ macro_rules! import_crates {
         import_crates!( $crate_name () );
         import_crates!( $( $rest )* );
     };
+    // internal: format to unique syntax
     ( $( $crate_name:ident ),* / $attrs:tt ) => {
         $( import_crates!( $crate_name $attrs ); )*
     };

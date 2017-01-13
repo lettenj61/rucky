@@ -5,6 +5,7 @@ extern crate rucky_macros;
 
 import_crates! {
     toml;
+    regex;
     rustc_serialize;
 }
 
@@ -26,8 +27,15 @@ fn specify_member() {
 
 #[test]
 fn use_imported_member() {
-    import!(toml::Table);
+    import!(std::collections::BTreeMap);
 
-    let t = Table::new();
-    println!("{:?}", t);
+    let mut map = BTreeMap::<i32, Vec<f64>>::new();
+    map.insert(5, vec![2.0, 4.5]);
+    assert_eq!(map.get(&5).unwrap().as_slice(), &[2.0, 4.5]);
+}
+
+#[test]
+fn one_liner_glob_import() {
+    import!(std::io::prelude *);
+    import!(regex *);
 }
