@@ -63,7 +63,7 @@
 //! ```
 //!
 //! Note that you need to split last segment of module name and block of items with
-//! whitespace, instrad of double colons `::` usually used in `use` statement.
+//! whitespace, insead of double colons `::` usually used in `use` statement.
 //!
 //! Glob imports are also supported:
 //!

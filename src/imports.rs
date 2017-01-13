@@ -1,3 +1,4 @@
+/// Macro to generate `use` statement at once.
 #[macro_export]
 macro_rules! import {
     () => { };
@@ -42,6 +43,7 @@ macro_rules! import {
     };
 }
 
+/// Macro to generate `extern crate` statement at once.
 #[macro_export]
 macro_rules! import_crates {
     () => { };
