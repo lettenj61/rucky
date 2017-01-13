@@ -17,7 +17,17 @@ fn rustc_compiles_this() {
 #[test]
 fn specify_member() {
     import! {
+        std::io *;
+        toml {Value, Table};
         rustc_serialize::json {Json, Builder, AsJson};
         std::path {Path, PathBuf};
     }
+}
+
+#[test]
+fn use_imported_member() {
+    import!(toml::Table);
+
+    let t = Table::new();
+    println!("{:?}", t);
 }

@@ -1,8 +1,20 @@
 #[macro_export]
 macro_rules! import {
     () => { };
+    ( $pkg:path ) => {
+        use $pkg;
+    };
     ( $pkg:path ; $( $rest:tt )* ) => {
         use $pkg;
+        import!( $( $rest )* );
+    };
+    (
+        $root:ident { $( $member:ident ),+ } ;
+        $( $rest:tt )*
+    ) => {
+        use $root :: {
+            $( $member ),*
+        } ;
         import!( $( $rest )* );
     };
     (
