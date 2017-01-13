@@ -6,6 +6,13 @@ macro_rules! import {
         import!( $( $rest )* );
     };
     (
+        $root:ident :: $($tail:ident)::+ *;
+        $( $rest:tt )*
+    ) => {
+        use $root :: $( $tail )::* :: *;
+        import!( $( $rest )* );
+    };
+    (
         $root:ident :: $($tail:ident)::+
         { $( $member:ident ),+ } ;
         $( $rest:tt )*
