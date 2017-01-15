@@ -1,7 +1,7 @@
 #![allow(unused_imports)]
 
 #[macro_use]
-extern crate rucky_macros;
+extern crate rucky;
 
 import_crates! {
     toml;

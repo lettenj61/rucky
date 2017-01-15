@@ -2,7 +2,7 @@
 authors = ["lettenj61 <lettenj61@users.noreply.github.com>"]
 description = "Macros for hasty, sketchy, funny Rust programming."
 license = "Apache/MIT"
-name = "rucky-macros"
+name = "rucky"
 version = "0.1.0"
 
 [dependencies]

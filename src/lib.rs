@@ -1,4 +1,4 @@
-//! Small sketchy macro library.
+//! Small crate with sketchy macro & utilities.
 //!
 //! **Many snippets in this document are not tested, please use it with caution.**
 //!
@@ -12,7 +12,7 @@
 //! Quick samples below:
 //!
 //! ```
-//! # #[macro_use] extern crate rucky_macros;
+//! #[macro_use] extern crate rucky;
 //! # fn main() {
 //! import_crates! {
 //!     rustc_serialize;
@@ -86,5 +86,4 @@
 //!
 //! - You can't define alias with `as` keyword when importing an item
 
-mod imports;
-mod preluder;
+mod macros;
