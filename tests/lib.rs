@@ -4,9 +4,7 @@
 extern crate rucky;
 
 import_crates! {
-    toml;
-    regex;
-    rustc_serialize;
+    toml, regex, rustc_serialize;
 }
 
 #[test]
@@ -38,4 +36,11 @@ fn use_imported_member() {
 fn one_liner_glob_import() {
     import!(std::io::prelude *);
     import!(regex *);
+}
+
+#[test]
+fn semicolon_sep() {
+    import_crates! {
+        rand; libc;
+    }
 }
