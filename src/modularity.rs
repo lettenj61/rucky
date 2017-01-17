@@ -1,9 +1,9 @@
-//! This module currently provides these macros:
-//!
-//! # Import crates and modules
+//! Provides macros to declare or use crates, modules.
 //!
 //! As their names explain, `import_crates!` and `import!` macros are
 //! shortcut to `extern crate` and `use` statement respectively.
+//!
+//! # Examples
 //!
 //! Quick samples below:
 //!
@@ -23,7 +23,7 @@
 //! # }
 //! ```
 //!
-//! Will be expanded into:
+//! will be expanded to:
 //!
 //! ```rust,no_run
 //! extern crate rustc_serialize;
@@ -33,12 +33,34 @@
 //! use std::ffi::*;
 //! ```
 //!
+//! # Import crates
+//!
 //! `import_crates!` macro can only generate `extern crate` statement, note that
 //! it will never import their module members, neither automatically nor explicitly.
 //! So only thing you can put in the macro block is just crate's names.
 //! You also need trailing semicolons `;` to tell the macro where to stop a statement.
 //!
-//! And for `import!` macro, The syntax used inside is quite similar to the ones
+//! Additionaly, you can group crates by attributes with following syntax:
+//!
+//! ```rust,ignore
+//! import_crates! {
+//!     rand, serde_json;
+//!     #[cfg(windows)] winapi, kernel32_sys;
+//! }
+//! ```
+//!
+//! and the code will be
+//!
+//! ```rust,ignore
+//! extern crate rand;
+//! extern crate serde_json;
+//! #[cfg(windows)] extern crate winapi;
+//! #[cfg(windows)] extern crate kernel32_sys;
+//! ```
+//!
+//! # Import modules
+//!
+//! For `import!` macro, The syntax used inside is quite similar to the ones
 //! for `use` statement, but there are some deviations.
 //!
 //! The basics like this:
@@ -76,8 +98,6 @@
 //! That is the limit of this macro.
 //!
 //! # What you cannot do
-//!
-//! The macros restricted to:
 //!
 //! - You can't define alias with `as` keyword when importing an item
 
