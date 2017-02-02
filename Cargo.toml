@@ -5,6 +5,7 @@ license = "Apache/MIT"
 name = "rucky"
 version = "0.1.0"
 repository = "https://github.com/lettenj61/rucky"
+keywords = [ "macro" ]
 
 [dependencies]
 
