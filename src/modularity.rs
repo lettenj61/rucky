@@ -9,14 +9,14 @@
 //!
 //! ```
 //! #[macro_use] extern crate rucky;
-//! # fn main() {
 //! import_crates! {
 //!     rustc_serialize, toml;
 //! }
+//! # fn main() {
 //! import! {
 //!     std::io {stdout, Write};
 //!     std::ffi *;
-//! #   //toml {Value, Table}; // TODO: failing, should discover what's happening.
+//!     toml {Value, Table};
 //! }
 //!
 //! import!(std::env::home_dir);
